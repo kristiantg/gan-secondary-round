@@ -1,0 +1,18 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model addresses {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  address   String
+  guid      String   @unique(map: "guid_1")
+  isActive  Boolean
+  latitude  Float
+  longitude Float
+  tags      String[]
+}
